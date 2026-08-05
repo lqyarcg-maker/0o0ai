@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>实验报告 - 0o0 AI 实验室</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="nav">
+        <a href="../index.html" class="logo">
+            <span class="o">0</span>o<span class="o">0</span><span class="sub">AI 实验室</span>
+        </a>
+        <nav>
+            <a href="../index.html">首页</a>
+            <a href="index.html" class="active">实验</a>
+            <a href="../templates/index.html">模板库</a>
+            <a href="../about/index.html">关于</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <h1 style="font-size:28px;font-weight:700;margin-bottom:8px;">实验报告</h1>
+    <p style="color:var(--text-muted);margin-bottom:32px;">每篇一个0o0时刻。不是教程，是实验记录。附可复制模板。</p>
+
+    <div class="filter-bar">
+        <button class="active" onclick="filterExperiments(this, 'all')">全部</button>
+        <button onclick="filterExperiments(this, 'finance')">金融监控</button>
+        <button onclick="filterExperiments(this, 'content')">内容分析</button>
+        <button onclick="filterExperiments(this, 'automation')">自动化</button>
+        <button onclick="filterExperiments(this, 'model')">模型实测</button>
+        <button onclick="filterExperiments(this, 'skill')">Skills</button>
+    </div>
+
+    <div class="card-grid" id="experiment-list">
+        <div class="card" data-category="finance" onclick="location.href='experiment-template.html'">
+            <span class="tag">金融监控</span>
+            <h3>我用AI监控了一只新股8天，5个指标全跑通了，让我0o0</h3>
+            <p>DRAM现货价格、换手率、全球存储龙头信号、融资余额、合约价供需——5大指标全自动追踪。</p>
+            <div class="meta">2026-07-27 · 首发 · 8分钟阅读</div>
+        </div>
+        <div class="card" data-category="content" onclick="location.href='experiment-template.html'">
+            <span class="tag">内容分析</span>
+            <h3>我让AI拆了公众号所有内容，分出11大类，让我0o0</h3>
+            <p>从新手教程到行业落地，11个分类自动归纳。连变现思路都分析出来了。</p>
+            <div class="meta">2026-08-05 · 实验手记 · 6分钟阅读</div>
+        </div>
+        <div class="card" data-category="automation" onclick="location.href='experiment-template.html'">
+            <span class="tag">自动化</span>
+            <h3>我把公众号运营拆成自动化管线让AI跑，让我0o0</h3>
+            <p>选题→写稿→排版→发布→分发，全链路任务拆解，一人运营一套系统。</p>
+            <div class="meta">2026-08-05 · 实验手记 · 10分钟阅读</div>
+        </div>
+        <div class="card" data-category="automation" onclick="location.href='experiment-template.html'">
+            <span class="tag">自动化</span>
+            <h3>我设了个每天15:30自动跑的监控任务，让我0o0</h3>
+            <p>定时触发+数据采集+仪表盘更新+日报推送，全自动。设好之后就没管过。</p>
+            <div class="meta">2026-07-28 · 实验手记 · 5分钟阅读</div>
+        </div>
+        <div class="card" data-category="model" onclick="location.href='experiment-template.html'">
+            <span class="tag">模型实测</span>
+            <h3>我同时跑了5个免费AI模型做同一件事，结果差距让我0o0</h3>
+            <p>同一任务，5个模型横评。速度、质量、可用性三维对比。</p>
+            <div class="meta">即将发布 · 模型横评 · 12分钟阅读</div>
+        </div>
+        <div class="card" data-category="skill" onclick="location.href='experiment-template.html'">
+            <span class="tag">Skills</span>
+            <h3>我给WorkBuddy装了个浏览器自动化Skill，效果让我0o0</h3>
+            <p>装上Skill后，WorkBuddy能自动打开网页、填表单、截图。实测5个场景。</p>
+            <div class="meta">即将发布 · Skills实测 · 8分钟阅读</div>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <p>0o0 AI 实验室 · 每篇一个惊叹点 · <a href="../about/index.html">关于</a> · <a href="experiment-template.html">投稿模板</a></p>
+    <p style="margin-top:8px;">Powered by WorkBuddy · 2026</p>
+</footer>
+
+<script>
+function filterExperiments(btn, category) {
+    document.querySelectorAll('.filter-bar button').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('#experiment-list .card').forEach(function(card) {
+        if (category === 'all' || card.dataset.category === category) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+</script>
+
+</body>
+</html>
