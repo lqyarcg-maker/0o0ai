@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>模板库 - 0o0 AI 实验室</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="nav">
+        <a href="../index.html" class="logo">
+            <span class="o">0</span>o<span class="o">0</span><span class="sub">AI 实验室</span>
+        </a>
+        <nav>
+            <a href="../index.html">首页</a>
+            <a href="../lab/index.html">实验</a>
+            <a href="index.html" class="active">模板库</a>
+            <a href="../about/index.html">关于</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <h1 style="font-size:28px;font-weight:700;margin-bottom:8px;">模板库</h1>
+    <p style="color:var(--text-muted);margin-bottom:32px;">实验中沉淀的可复用资产。点击复制，直接用。</p>
+
+    <div class="card-grid">
+        <div class="template-card">
+            <span class="badge">Prompt · 金融</span>
+            <h3>新股5指标监控生成器</h3>
+            <p>输入股票代码+指标列表，自动生成监控方案+仪表盘+自动化配置。</p>
+            <pre style="display:none;" id="tpl-monitor">帮我搭建一个新股监控系统，要求：
+1. 股票代码：[填入]
+2. 监控指标（5个）：
+   - 现货价格指数（每日）
+   - 换手率与筹码沉淀（每日）
+   - 龙头先行信号（每周）
+   - 融资余额与资金结构（每日T+1）
+   - 合约价与供需周期（每月）
+3. 数据源：westock-data + WebFetch
+4. 输出：HTML仪表盘 + 每日日报
+5. 自动化：每天15:30定时执行</pre>
+            <button class="copy-btn" onclick="copyTemplate(this, 'tpl-monitor')">复制 Prompt</button>
+        </div>
+
+        <div class="template-card">
+            <span class="badge">Prompt · 内容</span>
+            <h3>公众号内容拆解器</h3>
+            <p>输入公众号链接或文章列表，自动归纳内容分类、受众画像、变现思路。</p>
+            <pre style="display:none;" id="tpl-content">帮我分析以下公众号的内容大纲：
+1. 抓取/输入所有文章标题
+2. 按主题自动分类（≤12个分类）
+3. 每个分类列出代表性文章
+4. 分析内容节奏（发布频率、高峰期）
+5. 分析受众画像（核心受众+延伸受众）
+6. 提炼变现思路（不只靠流量主）
+输出格式：分类表格 + 特征总结表</pre>
+            <button class="copy-btn" onclick="copyTemplate(this, 'tpl-content')">复制 Prompt</button>
+        </div>
+
+        <div class="template-card">
+            <span class="badge">Prompt · 自动化</span>
+            <h3>运营流程自动化拆解器</h3>
+            <p>输入一个运营流程描述，自动拆解成可执行的任务管线。</p>
+            <pre style="display:none;" id="tpl-automation">帮我把以下运营流程拆解成自动化任务管线：
+流程描述：[填入你的流程]
+要求：
+1. 拆成可独立执行的子任务
+2. 每个任务标注：输入、输出、工具、预计耗时
+3. 标注任务依赖关系（哪个要先完成）
+4. 标注哪些可以并行、哪些必须串行
+5. 估算总耗时 vs 人工操作耗时
+输出：任务清单 + 流程图描述</pre>
+            <button class="copy-btn" onclick="copyTemplate(this, 'tpl-automation')">复制 Prompt</button>
+        </div>
+
+        <div class="template-card">
+            <span class="badge">Prompt · 写作</span>
+            <h3>实验体写作辅助器</h3>
+            <p>把你的实验记录转化成"实验体"风格的文章初稿。</p>
+            <pre style="display:none;" id="tpl-writing">帮我把以下实验记录写成"实验体"文章：
+实验记录：[粘贴你的记录]
+写作要求：
+1. 标题公式：我试了X，结果Y，让我0o0
+2. 结构：钩子→背景→设计→过程→0o0时刻→可复用资产→复现指南
+3. 风格：第一人称、口语化、短句、有数据有截图位
+4. 去AI味：不用"首先其次最后"，像跟朋友聊天
+5. 每个结论配数据，不空谈
+6. 0o0时刻要具体：不说"太强了"，说具体数字</pre>
+            <button class="copy-btn" onclick="copyTemplate(this, 'tpl-writing')">复制 Prompt</button>
+        </div>
+
+        <div class="template-card">
+            <span class="badge">Prompt · 降本</span>
+            <h3>免费模型接入配置器</h3>
+            <p>帮你找到并配置免费AI模型，零成本使用WorkBuddy。</p>
+            <pre style="display:none;" id="tpl-free-model">帮我配置免费AI模型接入WorkBuddy：
+1. 列出当前可用的免费模型方案
+2. 每个方案标注：模型名、免费额度、接入方式、限制
+3. 对比各方案的速度、质量、稳定性
+4. 给出推荐方案（分场景：日常/重度/创作）
+5. 附配置步骤</pre>
+            <button class="copy-btn" onclick="copyTemplate(this, 'tpl-free-model')">复制 Prompt</button>
+        </div>
+
+        <div class="template-card">
+            <span class="badge">Skill · 待上架</span>
+            <h3>更多模板持续更新中</h3>
+            <p>每篇实验产出的可复用资产都会沉淀到这里。关注不迷路。</p>
+            <button class="copy-btn" onclick="location.href='../lab/index.html'">去看实验 →</button>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <p>0o0 AI 实验室 · 每篇一个惊叹点 · <a href="../about/index.html">关于</a></p>
+    <p style="margin-top:8px;">Powered by WorkBuddy · 2026</p>
+</footer>
+
+<script>
+function copyTemplate(btn, id) {
+    var text = document.getElementById(id).textContent;
+    navigator.clipboard.writeText(text).then(function() {
+        var original = btn.textContent;
+        btn.textContent = '已复制!';
+        btn.style.background = 'var(--accent-dim)';
+        setTimeout(function() { btn.textContent = original; btn.style.background = ''; }, 2000);
+    }).catch(function() {
+        var original = btn.textContent;
+        btn.textContent = '复制失败，手动选';
+        setTimeout(function() { btn.textContent = original; }, 2000);
+    });
+}
+</script>
+
+</body>
+</html>
