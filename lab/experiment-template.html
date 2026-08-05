@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>实验模板 - 0o0 AI 实验室</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="nav">
+        <a href="../index.html" class="logo">
+            <span class="o">0</span>o<span class="o">0</span><span class="sub">AI 实验室</span>
+        </a>
+        <nav>
+            <a href="../index.html">首页</a>
+            <a href="index.html">实验</a>
+            <a href="../templates/index.html">模板库</a>
+            <a href="../about/index.html">关于</a>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+<article class="article">
+
+<h1>实验体文章模板（示例：长鑫科技监控系统）</h1>
+<div class="meta-line">
+    标签：金融监控 · 2026-07-27 · 8分钟阅读 · 首发
+</div>
+
+<h2>1. 钩子</h2>
+<p>我本来只是想用AI帮我看看新股数据，结果搭出了一个5指标全自动监控仪表盘。当我看到仪表盘每天15:30自动更新数据时，直接0o0。</p>
+
+<h2>2. 实验背景</h2>
+<p>长鑫科技（688825.SH）即将上市，作为存储芯片龙头，我想跟踪DRAM价格、换手率、龙头信号等指标。但手动每天查5个数据源太累——于是想用WorkBuddy搭个自动监控系统。</p>
+
+<h2>3. 实验设计</h2>
+<ul>
+    <li><strong>工具：</strong>WorkBuddy + westock-data + WebFetch + 自动化定时任务</li>
+    <li><strong>输入：</strong>股票代码 sh688825 + DRAM现货价格URL + 美光/SK海力士代码</li>
+    <li><strong>预期：</strong>能查到数据就行，手动点一下</li>
+    <li><strong>实际：</strong>全自动仪表盘，每日15:30定时更新</li>
+    <li><strong>耗时：</strong>搭建2小时，之后零维护</li>
+</ul>
+
+<h2>4. 实验过程</h2>
+
+<h3>Step 1: 定义5大监控指标</h3>
+<p>先想清楚要看什么。不是越多越好，5个核心指标足够：</p>
+<ol>
+    <li>DRAM现货价格指数（每日）</li>
+    <li>换手率与筹码沉淀进度（每日）</li>
+    <li>全球存储龙头先行信号（每周，美光+SK海力士）</li>
+    <li>融资余额与资金结构（每日T+1）</li>
+    <li>DRAM合约价与供需库存周期（每月）</li>
+</ol>
+<p>关键代码：</p>
+<pre><code>A股代码: sh688825
+美光代码: usMU.OQ
+SK海力士代码: usSKHY.OQ
+DRAM现货: https://www.dramx.com/Price/DSD.html</code></pre>
+
+<h3>Step 2: 用WorkBuddy搭建数据采集</h3>
+<p>用westock-data脚本获取A股实时行情，WebFetch抓取DRAM现货价格。核心命令：</p>
+<pre><code>node westock-data/scripts/index.js quote sh688825</code></pre>
+
+<h3>Step 3: 生成仪表盘HTML</h3>
+<p>让WorkBuddy根据5指标数据生成一个可视化HTML仪表盘，部署到CloudStudio。</p>
+
+<h3>Step 4: 设置每日自动化</h3>
+<p>创建定时任务，每天15:30自动执行数据采集+仪表盘更新。</p>
+<pre><code>自动化ID: automation-1785132420732
+触发时间: 每天 15:30
+任务: 采集5指标数据 → 更新仪表盘 → 推送日报</code></pre>
+
+<h2>5. 0o0时刻</h2>
+
+<div class="oo-zero">
+    <div class="label">0O0 MOMENT</div>
+    <p><strong>让我0o0的点：</strong></p>
+    <ul>
+        <li><strong>全自动运转</strong> - 设好之后没再管过，每天自动跑、自动更新、自动推送</li>
+        <li><strong>专业级输出</strong> - 一个非金融专业人士，搭出了5指标监控仪表盘</li>
+        <li><strong>零成本</strong> - 全程没花一分钱，用的免费模型+免费部署</li>
+    </ul>
+    <p><strong>数据对比：</strong></p>
+    <ul>
+        <li>预期：手动查5个网站，每天30分钟</li>
+        <li>实际：自动跑，每天0分钟</li>
+        <li>效率提升：从30分钟/天 → 0分钟/天</li>
+    </ul>
+</div>
+
+<h2>6. 可复用资产</h2>
+
+<h3>提示词模板</h3>
+<pre><code>帮我搭建一个新股监控系统，要求：
+1. 股票代码：[填入代码]
+2. 监控指标：[列出5个指标]
+3. 数据源：[列出数据来源]
+4. 输出：HTML仪表盘 + 每日日报
+5. 自动化：每天15:30定时执行</code></pre>
+
+<h3>自动化配置</h3>
+<p>在WorkBuddy中创建自动化任务，设置每日定时触发。Prompt写明5指标采集+仪表盘更新+日报推送。</p>
+
+<h2>7. 复现指南</h2>
+<ol>
+    <li><strong>准备：</strong>安装WorkBuddy，确认westock-data可用</li>
+    <li><strong>Step 1：</strong>定义你的5大监控指标</li>
+    <li><strong>Step 2：</strong>用上面的提示词模板让WorkBuddy搭建采集</li>
+    <li><strong>Step 3：</strong>生成仪表盘HTML，部署到CloudStudio</li>
+    <li><strong>Step 4：</strong>创建每日15:30定时自动化任务</li>
+    <li><strong>注意：</strong>新股5日后才开通融资融券，融资数据有延迟</li>
+</ol>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:32px 0;">
+
+<p style="color:var(--text-dim);font-size:14px;">这篇是实验体文章模板的示例填充版。实际写作时，用 <a href="../content/experiment-template.md">这个Markdown模板</a> 作为骨架，填入你自己的实验内容。</p>
+
+</article>
+</div>
+
+<footer class="site-footer">
+    <p>0o0 AI 实验室 · 每篇一个惊叹点 · <a href="../about/index.html">关于</a> · <a href="index.html">← 返回实验列表</a></p>
+    <p style="margin-top:8px;">Powered by WorkBuddy · 2026</p>
+</footer>
+
+</body>
+</html>
